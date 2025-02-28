@@ -1,0 +1,126 @@
+<div class="card-header">
+  <a class="btn btn-success" routerLink="/admin/equipements/create"
+    >Create New [+]</a
+  >
+</div>
+<div class="card-header">
+  <div
+    class="card-body table-container"
+    style="max-height: 500px; overflow-y: scroll"
+  >
+    <div class="form-group search-size">
+      <label for="searchEquipement"></label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchEquipement"
+        (input)="onSearch()"
+        id="searchEquipement"
+        placeholder="Enter equipement search"
+      />
+    </div>
+    <table
+      datatable
+      [dtOptions]="dtoptions"
+      [dtTrigger]="dtTrigger"
+      class="table table-bordered"
+      style="text-align: center; max-width: 100%; white-space: nowrap"
+    >
+      <thead class="bg-dark text-white">
+        <tr>
+          <td>ID</td>
+          <td>Serial Number</td>
+          <td>Localisation</td>
+          <td>Host</td>
+          <td>IP Address</td>
+          <td>Image</td>
+          <td>Model</td>
+          <td>Constructer</td>
+          <td>Actual OS</td>
+          <td>Recol OS</td>
+          <td>Product Group</td>
+          <td>End of sale</td>
+          <td>End of life</td>
+          <td>File</td>
+          <td>Created By</td>
+          <td>Last Update</td>
+          <td>Contrat ID</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipement of filteredEquipements">
+          <td>{{ equipement.id }}</td>
+          <td>{{ equipement.serialNumber }}</td>
+          <td>{{ equipement.localisation }}</td>
+          <td>{{ equipement.host }}</td>
+          <td>{{ equipement.ipAddress }}</td>
+          <td>{{ equipement.image }}</td>
+          <td>{{ equipement.model }}</td>
+          <td>{{ equipement.constructer }}</td>
+          <td>{{ equipement.actualOS }}</td>
+          <td>{{ equipement.recolOS }}</td>
+          <td>{{ equipement.productGroup }}</td>
+          <td>{{ equipement.eos }}</td>
+          <td>{{ equipement.eol }}</td>
+          <td *ngIf="equipement.file != null">
+            <p (click)="downloadFile(equipement.id, equipement.file.fileName)">
+              {{ equipement.file.fileName }}
+            </p>
+          </td>
+          <td *ngIf="equipement.file == null">
+            <a>no file</a>
+          </td>
+          <td>
+            <p (click)="showUserInformation(equipement.createdBy.userId)">
+              {{ equipement.createdBy.userName }}
+            </p>
+            On {{ equipement.createdBy.dateName }}
+          </td>
+          <td>
+            <div *ngIf="equipement.lastUpdate !== null">
+              <p (click)="showUserInformation(equipement.lastUpdate.userId)">
+                {{ equipement.lastUpdate.userName }}
+              </p>
+              On {{ equipement.lastUpdate.dateName }} <br />
+              <a class="btn btn-primary" (click)="loadUpdatedBy(equipement)"
+                >More</a
+              >
+            </div>
+          </td>
+          <td>
+            <p (click)="showContractDetails(equipement.contratId)">
+              {{ equipement.contratReference }}
+            </p>
+          </td>
+          <td style="width: 30%">
+            <a class="btn btn-primary" (click)="EditEquipement(equipement)"
+              >Edit</a
+            >
+            |
+            <a class="btn btn-danger" (click)="removeEquipement(equipement)"
+              >Delete</a
+            >
+            |
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="d('Cross click')">
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>

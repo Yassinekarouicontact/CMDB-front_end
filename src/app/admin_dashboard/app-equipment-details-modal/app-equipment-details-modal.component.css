@@ -1,0 +1,27 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.close {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.close:focus,
+.close:hover {
+  outline: none;
+}
+
+.modal-body {
+  padding: 1rem;
+}

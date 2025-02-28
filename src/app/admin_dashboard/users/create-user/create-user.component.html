@@ -1,0 +1,142 @@
+<div class="form">
+  <h2 id="registration">Create User</h2>
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    style="height: 500px; overflow-y: scroll"
+  >
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" formControlName="firstName" />
+            <div
+              *ngIf="
+                userForm.get('firstName').errors?.required &&
+                userForm.get('firstName').touched
+              "
+            >
+              First Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              placeholder="Enter Last Name"
+            />
+            <div
+              *ngIf="
+                userForm.get('lastName').errors?.required &&
+                userForm.get('lastName').touched
+              "
+            >
+              Last Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email" />
+            <div
+              *ngIf="
+                userForm.get('email').errors?.required &&
+                userForm.get('email').touched
+              "
+            >
+              Email is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" formControlName="password" />
+            <div
+              *ngIf="
+                userForm.get('password').errors?.required &&
+                userForm.get('password').touched
+              "
+            >
+              Password is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" class="form-control" formControlName="role">
+              <option value="" disabled selected>Select a role</option>
+              <option value="ADMIN">Admin</option>
+              <option value="CONSULTANT">Consultant</option>
+              <option value="COMMERCIAL">Commercial</option>
+              <option value="CLIENT">Client</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="departements">Departments</label>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Select department(s)</mat-label>
+              <mat-select
+                id="departements"
+                formControlName="departements"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let department of departements"
+                  [value]="department"
+                >
+                  {{ department }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div style="flex: 0.5">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="contacts">Contacts</label>
+            <input type="text" id="contacts" formControlName="contacts" />
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="addContact(userForm.get('contacts').value)"
+            >
+              +
+            </button>
+          </div>
+          <div *ngFor="let contact of contacts">{{ contact }}</div>
+        </div>
+      </div>
+    </div>
+
+    <input type="submit" value="Submit" id="btn" [disabled]="!userForm.valid" />
+  </form>
+</div>

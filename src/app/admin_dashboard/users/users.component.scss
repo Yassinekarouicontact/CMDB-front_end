@@ -1,0 +1,48 @@
+.container {
+  padding: 30px;
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  table {
+    th {
+      font-weight: bold;
+    }
+  }
+
+  .btn-group {
+    button {
+      margin-right: 10px;
+    }
+  }
+}
+
+.modal-body {
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .form-select {
+    height: 150px;
+    margin-bottom: 20px;
+  }
+}
+#updateUserModal {
+  z-index: 1050;
+  display: block !important;
+  opacity: 1 !important;
+}
+#updateUserModal .modal-dialog {
+  width: 120%;
+  z-index: 1050;
+  margin-bottom: 20px;
+  top: 100px;
+}
+.modal-dialog {
+  max-width: 800px; /* Adjust the width as needed */
+  height: 1000px; /* Adjust the height as needed */
+  margin: 1.75rem auto;
+}

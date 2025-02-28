@@ -1,0 +1,63 @@
+<div class="card-header">
+  <a class="btn btn-success" routerLink="/admin/users/create">Create New [+]</a>
+</div>
+<div class="card-header">
+  <div
+    class="card-body table-container"
+    style="max-height: 500px; overflow-y: scroll"
+  >
+    <div class="form-group">
+      <label for="searchUsers"></label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchUsers"
+        (input)="onSearch()"
+        id="searchUsers"
+        placeholder="Enter user search"
+      />
+    </div>
+    <table
+      datatable
+      [dtOptions]="dtoptions"
+      [dtTrigger]="dtTrigger"
+      class="table table-bordered"
+      style="text-align: center; max-width: 100%; white-space: nowrap"
+    >
+      <thead class="bg-dark text-white">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Departments</th>
+          <th>Contacts</th>
+          <th>Locked</th>
+          <th>Enabled</th>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.departements }}</td>
+          <td>{{ user.contacts }}</td>
+          <td>{{ user.locked }}</td>
+          <td>{{ user.enabled }}</td>
+
+          <td style="width: 30%">
+            <a class="btn btn-primary" (click)="EditUser(user)">Edit</a>
+            |
+            <a class="btn btn-danger" (click)="deleteUser(user)">Delete</a>
+            |
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

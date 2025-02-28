@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h4 class="modal-title">Equipment Details</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="modal.dismiss()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>ID: {{ equipement.id }}</p>
+  <p>Serial Number: {{ equipement.serialNumber }}</p>
+  <p>Model: {{ equipement.model }}</p>
+  <p>Localistation: {{ equipement.localisation }}</p>
+  <p>Host: {{ equipement.host }}</p>
+  <p>IpAddress: {{ equipement.ipAddress }}</p>
+  <p>Image: {{ equipement.image }}</p>
+  <p>Constructer: {{ equipement.constructer }}</p>
+  <p>ActualOS:{{ equipement.actualOS }}</p>
+  <p>RecolOS: {{ equipement.recolOS }}</p>
+  <p>productGroup: {{ equipement.productGroup }}</p>
+  <p>End of Support: {{ equipement.eos }}</p>
+  <p>End of life: {{ equipement.eol }}</p>
+  <p>
+    Created By: {{ equipement.createdBy.userName }} On
+    {{ equipement.createdBy.dateName }}
+  </p>
+  <p>
+    updatedBy: {{ equipement.lastUpdate.userName }} On
+    {{ equipement.lastUpdate.dateName }}
+  </p>
+  <p>ContractID: {{ equipement.contratReference }}</p>
+</div>

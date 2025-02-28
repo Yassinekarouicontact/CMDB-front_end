@@ -1,0 +1,291 @@
+<!-- <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Users
+          <button
+            class="btn btn-sm btn-primary float-end"
+            (click)="showAddModal = true"
+          >
+            Add User
+          </button>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Departments</th>
+                  <th>Contacts</th>
+                  <th>Locked</th>
+                  <th>Enabled</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>{{ user.departements }}</td>
+                  <td>{{ user.contacts }}</td>
+                  <td>{{ user.locked }}</td>
+                  <td>{{ user.enabled }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button
+                        class="btn btn-sm btn-danger"
+                        (click)="deleteUser(user.email, token, user)"
+                      >
+                        Delete
+                      </button>
+
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        (click)="showUpdateForm(content, user)"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> -->
+<!-- UpdateUserModal -->
+<!-- <div
+          class="modal fade"
+          id="updateUserModal"
+          #updateUserModal
+          tabindex="-1"
+          aria-labelledby="updateUserModalLabel"
+          aria-hidden="true"
+          *ngIf="showUpdateModal"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="updateUserModalLabel">
+                  Update User
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()">
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <div class="form-group">
+                      <label for="id">ID:</label>
+                      <input
+                        type="text"
+                        formControlName="id"
+                        class="form-control"
+                        placeholder="Enter User ID"
+                      />
+                      <div
+                        *ngIf="
+                          updateUserForm.get('id').errors?.required &&
+                          updateUserForm.get('id').touched
+                        "
+                        class="text-danger mt-1"
+                      >
+                        ID is required.
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="firstName">First Name:</label>
+                      <input
+                        type="text"
+                        formControlName="firstName"
+                        class="form-control"
+                        placeholder="Enter First Name"
+                      />
+                      <div
+                        *ngIf="
+                          updateUserForm.get('firstName').errors?.required &&
+                          updateUserForm.get('firstName').touched
+                        "
+                        class="text-danger mt-1"
+                      >
+                        First Name is required.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="lastName">Last Name:</label>
+                      <input
+                        type="text"
+                        formControlName="lastName"
+                        class="form-control"
+                        placeholder="Enter Last Name"
+                      />
+                      <div
+                        *ngIf="
+                          updateUserForm.get('lastName').errors?.required &&
+                          updateUserForm.get('lastName').touched
+                        "
+                        class="text-danger mt-1"
+                      >
+                        Last Name is required.
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="departments">Departments:</label>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Select department(s)</mat-label>
+                        <mat-select formControlName="departements" multiple>
+                          <mat-option
+                            *ngFor="let department of departements"
+                            [value]="department"
+                          >
+                            {{ department }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="contacts">Contacts:</label>
+                      <input
+                        type="text"
+                        formControlName="contacts"
+                        class="form-control"
+                        placeholder="Enter contacts"
+                      />
+                      <div
+                        *ngIf="
+                          updateUserForm.get('contacts').errors?.required &&
+                          updateUserForm.get('contacts').touched
+                        "
+                        class="text-danger mt-1"
+                      >
+                        Contacts are required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">
+                    Update User
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div> -->
+<!-- </div> -->
+<!-- AddUserModal -->
+<!-- <form [formGroup]="userForm" (ngSubmit)="addUser()">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              formControlName="firstName"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              formControlName="lastName"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" class="form-control" formControlName="role">
+              <option value="" disabled selected>Select a role</option>
+              <option value="ADMIN">Admin</option>
+              <option value="CONSULTANT">Consultant</option>
+              <option value="COMMERCIAL">Commercial</option>
+              <option value="CLIENT">Client</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="departments">Departments:</label>
+            <mat-form-field appearance="fill">
+              <mat-label>Select department(s)</mat-label>
+              <mat-select formControlName="departements" multiple>
+                <mat-option
+                  *ngFor="let department of departements"
+                  [value]="department"
+                >
+                  {{ department }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+
+<!-- <div class="form-group">
+            <label for="contacts">Contacts:</label>
+            <input type="text" class="form-control" id="contacts" name="contacts" [(ngModel)]="userRegistrationRequest.contacts" required>
+          </div> -->
+
+<!-- <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            Register
+          </button>
+
+          <div *ngIf="isLoading">
+            <p>Loading...</p>
+          </div>
+
+          <div *ngIf="isSuccess">
+            <p>Successfully registered!</p>
+          </div>
+
+          <div *ngIf="errorMessage">
+            <p>{{ errorMessage }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div style="display: flex; justify-content: center; align-items: center">
+  <div class="card" style="width: 60%">
+    <h3 style="text-align: center">Users</h3>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

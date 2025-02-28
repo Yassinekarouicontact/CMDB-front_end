@@ -1,0 +1,220 @@
+.top-section {
+  @media only screen and (max-width: 1600px) {
+    width: 1280px;
+  }
+  @media only screen and (max-width: 1500px) {
+    width: 1180px;
+  }
+  @media only screen and (max-width: 1400px) {
+    width: 1080px;
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 980px;
+  }
+}
+.middle-section {
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 1600px) {
+    width: 1280px;
+  }
+  @media only screen and (max-width: 1500px) {
+    width: 1180px;
+  }
+  @media only screen and (max-width: 1400px) {
+    width: 1080px;
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 980px;
+  }
+  .widget {
+    height: 350px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 5px 5px 5px #939393;
+    &.left {
+      width: 890px;
+      @media only screen and (max-width: 1600px) {
+        width: 790px;
+      }
+      @media only screen and (max-width: 1500px) {
+        width: 690px;
+      }
+      @media only screen and (max-width: 1400px) {
+        width: 590px;
+      }
+      @media only screen and (max-width: 1200px) {
+        width: 490px;
+      }
+    }
+    &.right {
+      width: 450px;
+    }
+  }
+}
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  .widget {
+    height: 250px;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 5px 5px 5px #939393;
+    &.left {
+      width: 670px;
+      @media only screen and (max-width: 1200px) {
+        width: 570px;
+      }
+    }
+    &.right {
+      width: 670px;
+      @media only screen and (max-width: 1600px) {
+        width: 570px;
+      }
+      @media only screen and (max-width: 1500px) {
+        width: 470px;
+      }
+      @media only screen and (max-width: 1400px) {
+        width: 370px;
+      }
+      @media only screen and (max-width: 1200px) {
+        width: 370px;
+      }
+    }
+  }
+}
+.widget-container {
+  display: flex;
+  align-items: space-between;
+  .widget {
+    width: 325px;
+    height: 175px;
+    background-color: #fff;
+    color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    box-shadow: 5px 5px 5px #939393;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    &.green {
+      background-color: rgb(4, 67, 66);
+    }
+    &.yellow {
+      background-color: rgb(237, 158, 32);
+    }
+    &.red {
+      background-color: rgb(126, 5, 5);
+    }
+    &.blue {
+      background-color: rgb(105, 32, 251);
+    }
+    @media only screen and (max-width: 1600px) {
+      width: 300px;
+    }
+    @media only screen and (max-width: 1500px) {
+      width: 275px;
+    }
+    @media only screen and (max-width: 1400px) {
+      width: 250px;
+    }
+    @media only screen and (max-width: 1200px) {
+      width: 225px;
+    }
+
+    .icon {
+      width: 100px;
+      font-size: 60px;
+      text-align: center;
+      @media only screen and (max-width: 1200px) {
+        font-size: 45px;
+      }
+    }
+    .value {
+      text-align: center;
+      width: 175px;
+      .top {
+        font-size: 30px;
+        @media only screen and (max-width: 1200px) {
+          font-size: 26px;
+        }
+      }
+      .bottom {
+        font-size: 20px;
+        margin-top: 10px;
+        @media only screen and (max-width: 1200px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+.chart-container {
+  padding: 20px;
+}
+.transactions {
+  .transaction-wrapper {
+    overflow: auto;
+    height: 185px;
+  }
+  .title {
+    padding: 20px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #333333;
+    font-size: 18px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica,
+      sans-serif;
+  }
+  .transaction {
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    .image {
+      width: 55px;
+      img {
+        width: 45px;
+        height: 45px;
+        object-fit: cover;
+      }
+    }
+    .title {
+      padding: 10px;
+      font-size: 16px;
+      width: 190px;
+    }
+    .price {
+      padding: 10px;
+      font-size: 16px;
+      width: 90px;
+    }
+    .shop-location {
+      padding: 10px;
+      font-size: 16px;
+      width: 190px;
+      .location {
+        margin-top: 4px;
+        font-size: 14px;
+        color: grey;
+      }
+    }
+    .status {
+      padding: 10px;
+      font-size: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      &.confirmed {
+        color: #6920fb;
+      }
+      &.pending {
+        color: #7e0505;
+      }
+      &.shipped {
+        color: #044342;
+      }
+    }
+  }
+}

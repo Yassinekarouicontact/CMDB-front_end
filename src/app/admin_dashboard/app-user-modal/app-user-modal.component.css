@@ -1,0 +1,27 @@
+.user-details {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.user-details h2 {
+  margin-top: 0;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-item {
+  margin: 10px 0;
+}
+
+.user-info-item .label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.user-info-item .value {
+  font-style: italic;
+}

@@ -1,0 +1,152 @@
+<div class="form">
+  <h2 id="registration">Update Contract</h2>
+  <form
+    [formGroup]="contractForm"
+    (ngSubmit)="onSubmit()"
+    style="height: 500px; overflow-y: scroll"
+  >
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 45%">
+          <label for="reference">Reference</label>
+          <input
+            type="text"
+            id="reference"
+            placeholder="reference.."
+            formControlName="reference"
+            #reference
+            required
+          />
+          <small *ngIf="reference.invalid && reference.touched">
+            Reference is a required field
+          </small>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="startDate">Start Date</label>
+          <input
+            type="date"
+            id="startDate"
+            placeholder="startDate.."
+            formControlName="startDate"
+            #startDate
+            required
+          />
+          <small *ngIf="startDate.invalid && startDate.touched"
+            >startDate is a required field</small
+          >
+        </div>
+      </div>
+
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="endDate">End Date</label>
+          <input
+            type="date"
+            id="endDate"
+            placeholder="endDate.."
+            formControlName="endDate"
+            #endDate
+            required
+          />
+          <small *ngIf="endDate.invalid && endDate.touched"
+            >endDate is a required field</small
+          >
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="contractType">Contract Type</label>
+          <input
+            type="text"
+            id="contractType"
+            placeholder="contractType.."
+            formControlName="contractType"
+            #contractType
+            required
+          />
+          <small *ngIf="contractType.invalid && contractType.touched"
+            >contractType is a required field</small
+          >
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="risingAmount">Rising Amount</label>
+          <input
+            type="number"
+            id="risingAmount"
+            placeholder="risingAmount.."
+            formControlName="risingAmount"
+            #risingAmount
+            required
+          />
+          <small *ngIf="risingAmount.invalid && risingAmount.touched"
+            >risingAmount is a required field</small
+          >
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="equipements">Equipements</label>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Select equipment(s)</mat-label>
+              <mat-select
+                id="equipementsID"
+                formControlName="equipementsID"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let equipement of equipements"
+                  [value]="equipement.id"
+                  >{{ equipement.serialNumber }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="clientID">Clients</label>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Select client</mat-label>
+              <mat-select id="clientID" formControlName="clientID">
+                <mat-option *ngFor="let client of clients" [value]="client.id"
+                  >{{ client.firstName }} {{ client.lastName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label *ngIf="contract.file" for="file"
+              >Change current file : <b>{{ contract.file.fileName }}</b>
+            </label>
+            <input type="file" (change)="onFileChange($event.target.files)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      value="Submit"
+      id="btn"
+      [disabled]="!contractForm.valid"
+    />
+  </form>
+</div>

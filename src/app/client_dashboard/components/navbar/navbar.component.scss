@@ -1,0 +1,122 @@
+nav.navbar {
+  &.navbar-transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &.navbar-absolute {
+    position: absolute;
+  }
+
+  &.fixed-top {
+    top: 0;
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-right: 20px;
+
+    .navbar-toggler-icon {
+      background-color: #333;
+      width: 25px;
+      height: 3px;
+      display: block;
+    }
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px;
+  }
+
+  .user {
+    background-color: #fff;
+    border-radius: 25px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    color: #333;
+    text-transform: capitalize;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 5px 10px rgba(246, 162, 16, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .user-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      font-size: 24px;
+    }
+  }
+}
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}
+button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+.user {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* add other styles as necessary */
+}
+
+.user {
+  font-size: 14px;
+}
+mat-toolbar {
+  background: #f7f7f7;
+}
+.user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  &-icon {
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+::ng-deep {
+  .mat-menu-item {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+
+    .mat-icon {
+      font-size: 20px;
+      margin-right: 8px;
+      color: #777;
+    }
+  }
+
+  .mat-icon-button {
+    border-radius: 50%;
+  }
+}

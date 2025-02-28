@@ -1,0 +1,80 @@
+$table-header-bg: #ff9900;
+$table-header-text-color: #fff;
+$table-row-even-bg: #f2f2f2;
+$table-row-hover-bg: #ff9900;
+$table-search-result-bg: #ffff00;
+
+.align-middle {
+  vertical-align: middle !important;
+}
+.search-size{
+  width: 300px;
+}
+.form-group {
+  position: relative;
+}
+.form-group input[type="text"] {
+  padding-left: 30px;
+}
+.form-group:after {
+  content: "\f002";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 68%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #ccc;
+}
+.form-group.active:after {
+  color: #ff9900;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+
+  th,
+  td {
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  th {
+    background-color: $table-header-bg;
+    color: $table-header-text-color;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: $table-row-even-bg;
+  }
+
+  tbody tr:hover {
+    background-color: $table-row-hover-bg;
+  }
+
+  tbody tr.search-result {
+    background-color: $table-search-result-bg;
+  }
+  td p {
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  td p:hover {
+    color: rgb(67, 67, 90);
+  }
+}

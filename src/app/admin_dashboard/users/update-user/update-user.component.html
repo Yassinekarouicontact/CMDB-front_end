@@ -1,0 +1,105 @@
+<div class="form">
+  <h2 id="registration">Update User</h2>
+  <form
+    [formGroup]="updateUserForm"
+    (ngSubmit)="onSubmit()"
+    style="height: 500px; overflow-y: scroll"
+  >
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input
+              type="text"
+              formControlName="firstName"
+              class="form-control"
+              placeholder="Enter First Name"
+            />
+            <div
+              *ngIf="
+                updateUserForm.get('firstName').errors?.required &&
+                updateUserForm.get('firstName').touched
+              "
+              class="text-danger mt-1"
+            >
+              First Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input
+              type="text"
+              formControlName="lastName"
+              class="form-control"
+              placeholder="Enter Last Name"
+            />
+            <div
+              *ngIf="
+                updateUserForm.get('lastName').errors?.required &&
+                updateUserForm.get('lastName').touched
+              "
+              class="text-danger mt-1"
+            >
+              Last Name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="departements">Departments</label>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Select department(s)</mat-label>
+              <mat-select
+                id="departements"
+                formControlName="departements"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let department of departements"
+                  [value]="department"
+                >
+                  {{ department }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex: 0.5">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="contacts">Contacts</label>
+            <input type="text" id="contacts" formControlName="contacts" />
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="addContact(updateUserForm.get('contacts').value)"
+            >
+              +
+            </button>
+          </div>
+          <div *ngFor="let contact of contacts">{{ contact }}</div>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      value="Submit"
+      id="btn"
+      [disabled]="!updateUserForm.valid"
+    />
+  </form>
+</div>

@@ -1,0 +1,123 @@
+<div class="card-header">
+  <a class="btn btn-success" routerLink="/admin/contracts/create"
+    >Create New [+]</a
+  >
+</div>
+<div class="card-header">
+  <div
+    class="card-body table-container"
+    style="max-height: 500px; overflow-y: scroll"
+  >
+    <div class="form-group search-size">
+      <label for="searchContract"></label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="searchContract"
+        (input)="onSearch()"
+        id="searchContract"
+        placeholder="Enter contract search"
+      />
+    </div>
+    <table
+      datatable
+      [dtOptions]="dtoptions"
+      [dtTrigger]="dtTrigger"
+      class="table table-bordered"
+      style="text-align: center; max-width: 100%; white-space: nowrap"
+    >
+      <thead class="bg-dark text-white">
+        <tr>
+          <td>ID</td>
+          <td>Reference</td>
+          <td>Start Date</td>
+          <td>End Date</td>
+          <td>Contract Type</td>
+          <td>Rising Amount</td>
+          <td>File</td>
+          <td>Created By</td>
+          <td>Updated By</td>
+          <td>Equipements</td>
+          <td>Client</td>
+          <td>Actions</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contract of filteredContracts">
+          <td>{{ contract.id }}</td>
+          <td>{{ contract.reference }}</td>
+          <td>{{ contract.startDate }}</td>
+          <td>{{ contract.endDate }}</td>
+          <td>{{ contract.contractType }}</td>
+          <td>{{ contract.risingAmount }}</td>
+          <td *ngIf="contract.file != null">
+            <p (click)="downloadFile(contract.id, contract.file.fileName)">
+              {{ contract.file.fileName }}
+            </p>
+          </td>
+          <td *ngIf="contract.file == null">
+            <a>no file</a>
+          </td>
+          <td>
+            <p (click)="showUserInformation(contract.createdBy.userId)">
+              {{ contract.createdBy.userName }}
+            </p>
+            On {{ contract.createdBy.dateName }}
+          </td>
+          <td>
+            <div *ngIf="contract.lastUpdate !== null">
+              <p (click)="showUserInformation(contract.lastUpdate.userId)">
+                {{ contract.lastUpdate.userName }}
+              </p>
+              On {{ contract.lastUpdate.dateName }} <br />
+              <a class="btn btn-primary" (click)="loadUpdatedBy(contract)"
+                >More</a
+              >
+            </div>
+          </td>
+          <td>
+            <p *ngFor="let equipement of contractEquipements">
+              <span
+                *ngIf="contract.equipementsID.includes(equipement.id)"
+                (click)="showEquipmentDetails(equipement.id)"
+              >
+                {{ equipement.serialNumber }}
+              </span>
+            </p>
+          </td>
+
+          <td>
+            <p (click)="showUserInformation(+contract.clientID)">
+              {{ contract.clientFirstName }} {{ contract.clientLastName }}
+            </p>
+          </td>
+
+          <td style="width: 30%">
+            <a class="btn btn-primary" (click)="EditContract(contract)">Edit</a>
+            |
+            <a class="btn btn-danger" (click)="removeContract(contract)"
+              >Delete</a
+            >
+            |
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="d('Cross click')">
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>

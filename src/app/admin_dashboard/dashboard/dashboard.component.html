@@ -1,0 +1,88 @@
+<div class="top-section">
+  <div class="widget-container">
+    <div class="widget green">
+      <div class="icon">
+        <img
+          style="width: 80px; height: 80px"
+          src="assets/users.png"
+          alt="Users Image"
+        />
+      </div>
+      <div class="value">
+        <div class="top">{{ nbrUsers }}</div>
+        <div class="bottom">Users</div>
+      </div>
+    </div>
+    <div class="widget yellow">
+      <div class="icon">
+        <img
+          style="width: 80px; height: 80px"
+          src="assets/contracts.png"
+          alt="Contracts Image"
+        />
+      </div>
+      <div class="value">
+        <div class="top">{{ nbrContracts }}</div>
+        <div class="bottom">Contracts</div>
+      </div>
+    </div>
+    <div class="widget red">
+      <div class="icon">
+        <img
+          style="width: 80px; height: 80px"
+          src="assets/equipements.png"
+          alt="Equipements Image"
+        />
+      </div>
+      <div class="value">
+        <div class="top">{{ nbrEquipements }}</div>
+        <div class="bottom">Equipements</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="middle-section">
+  <div class="widget left">
+    <div class="chart-container" [chart]="contractsKeyDates"></div>
+  </div>
+  <div class="widget right">
+    <div class="chart-container" [chart]="userByRoles"></div>
+  </div>
+</div>
+<div class="bottom-section">
+  <div class="widget left">
+    <div class="transactions">
+      <div class="title">Last few Equipements</div>
+      <div class="transaction-wrapper">
+        <div class="transaction" *ngFor="let equipement of equipements">
+          <!-- <div class="image">
+            <img [src]="transaction.imgSrc" alt="" />
+          </div> -->
+          <div class="title">{{ equipement.serialNumber }}</div>
+          <div class="price">{{ equipement.quantity }}</div>
+          <div class="shop-location">
+            <div class="shop">{{ equipement.ipAddress }}</div>
+            <div class="location">{{ equipement.localisation }}</div>
+          </div>
+          <div class="shop-location">
+            <div class="shop">{{ equipement.actualOS }}</div>
+            <div class="location">{{ equipement.recolOS }}</div>
+          </div>
+          <!-- <div
+            class="status"
+            [ngClass]="{
+              confirmed: transaction.status === 'confirmed',
+              pending: transaction.status === 'pending',
+              shipped: transaction.status === 'shipped'
+            }"
+          >
+            {{ transaction.status }}
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="widget right">
+    <div class="chart-container" [chart]="contractSortedGraph"></div>
+  </div>
+</div>

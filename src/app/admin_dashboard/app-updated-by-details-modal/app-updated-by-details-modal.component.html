@@ -1,0 +1,36 @@
+<div
+  class="modal"
+  [ngClass]="{ scrollable: updateBy.length >= 6 }"
+  style="
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 50%;
+    max-height: 50%;
+    overflow-y: auto;
+  "
+>
+  <div class="modal-header">
+    <h4 class="modal-title">Modification History</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p *ngFor="let updateItem of updateBy" style="border: 1px solid red">
+      <strong style="color: red">Updated By : </strong
+      >{{ updateItem.userName }} <strong style="color: red">On</strong>
+      {{ updateItem.dateName }} <br />
+      <strong style="color: red">Updates : </strong>
+      {{ updateItem.updateDetails }}
+    </p>
+  </div>
+</div>

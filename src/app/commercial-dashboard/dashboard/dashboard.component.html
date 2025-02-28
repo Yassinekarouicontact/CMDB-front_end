@@ -1,0 +1,65 @@
+<!-- dashboard.component.html -->
+<div class="dashboard">
+  <div class="summary">
+    <div class="summary-card">
+      <div class="summary-card-header">
+        <i class="fas fa-clipboard"></i>
+        <h2>Contracts</h2>
+      </div>
+      <div class="summary-card-body">
+        <h3>{{ nbrContracts }}</h3>
+        <p>Total Contracts</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-header">
+        <i class="fas fa-toolbox"></i>
+        <h2>Equipments</h2>
+      </div>
+      <div class="summary-card-body">
+        <h3>{{ nbrEquipements }}</h3>
+        <p>Total Equipments</p>
+      </div>
+    </div>
+  </div>
+  <div class="charts">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Flow of Incoming and Outgoing Contracts per Month</h2>
+      </div>
+      <div class="chart-card-body">
+        <highcharts-chart
+          [Highcharts]="Highcharts"
+          [options]="contractsKeyDates"
+        ></highcharts-chart>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h2>Contracts Sorted by End Date</h2>
+      </div>
+      <div class="chart-card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Contract ID</th>
+              <th>Client</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contract of contractSorted">
+              <td>{{ contract.id }}</td>
+              <td>{{ contract.client }}</td>
+              <td>{{ contract.startDate | date : "dd/MM/yyyy" }}</td>
+              <td>{{ contract.endDate | date : "dd/MM/yyyy" }}</td>
+              <td>{{ contract.value | currency }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

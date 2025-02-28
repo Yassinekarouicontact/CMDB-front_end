@@ -1,0 +1,162 @@
+<div class="form">
+  <h2 id="registration">Create Contract</h2>
+  <form (ngSubmit)="onSubmit()" #contractForm="ngForm">
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 45%">
+          <label for="reference">Reference</label>
+          <input
+            type="text"
+            id="reference"
+            name="reference"
+            placeholder="reference.."
+            #reference="ngModel"
+            [(ngModel)]="contract.reference"
+            required
+          />
+          <small *ngIf="reference.invalid && reference.touched">
+            Reference is a required field
+          </small>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="startDate">Start Date</label>
+          <input
+            type="date"
+            id="startDate"
+            name="startDate"
+            [max]="currentDateTime"
+            placeholder="yyyy-mm-dd"
+            #startDate="ngModel"
+            [(ngModel)]="contract.startDate"
+            required
+          />
+          <small *ngIf="startDate.invalid && startDate.touched">
+            Start Date is a required field
+          </small>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="endDate">End Date</label>
+          <input
+            type="date"
+            id="endDate"
+            name="endDate"
+            [min]="contract.startDate"
+            [max]="currentDateTime"
+            placeholder="yyyy-mm-dd"
+            #endDate="ngModel"
+            [(ngModel)]="contract.endDate"
+            required
+          />
+          <small *ngIf="endDate.invalid && endDate.touched">
+            End Date is a required field
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="contractType">Contract Type</label>
+          <input
+            type="text"
+            id="contractType"
+            name="contractType"
+            placeholder="contractType.."
+            #contractType="ngModel"
+            [(ngModel)]="contract.contractType"
+            required
+          />
+          <small *ngIf="contractType.invalid && contractType.touched">
+            Type is a required field
+          </small>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <label for="risingAmount">Rising Amount</label>
+          <input
+            type="number"
+            id="risingAmount"
+            name="risingAmount"
+            placeholder="risingAmount.."
+            #risingAmount="ngModel"
+            [(ngModel)]="contract.risingAmount"
+            required
+          />
+          <small *ngIf="risingAmount.invalid && risingAmount.touched">
+            Rising is a required field
+          </small>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex">
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="equipements">Equipements:</label>
+            <div class="equipements-container">
+              <div class="equipement" *ngFor="let equipement of equipements">
+                <span>{{ equipement.serialNumber }}</span>
+                <button
+                  type="button"
+                  class="delete-equipement"
+                  (click)="deleteEquipment(equipement.id)"
+                >
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary add-equipement"
+              (click)="openCreateEquipementModal()"
+            >
+              Add Equipment
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 90%">
+          <div class="form-group">
+            <label for="clients">Clients</label>
+            <mat-form-field appearance="fill" style="width: 100%">
+              <mat-label>Select client</mat-label>
+              <mat-select
+                id="clients"
+                name="clients"
+                [(ngModel)]="contract.clientID"
+              >
+                <mat-option *ngFor="let client of clients" [value]="client.id"
+                  >{{ client.firstName }} {{ client.lastName }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div style="flex: 1">
+        <div style="width: 45%">
+          <div class="form-group">
+            <label for="file">File</label>
+            <input type="file" (change)="onFileChange($event.target.files)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input
+      type="submit"
+      value="Submit"
+      id="btn"
+      [disabled]="!contractForm.valid"
+    />
+  </form>
+</div>

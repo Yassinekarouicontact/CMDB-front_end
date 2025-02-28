@@ -1,0 +1,55 @@
+<nav
+  class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
+>
+  <button
+    mat-button
+    class="notf-pos mt-2 d-flex align-items-center"
+    (click)="showNotifications = !showNotifications"
+  >
+    <img src="./assets/notification.png" alt="" class="user-image mr-1 p-2" />
+    <span class="badge badge-danger rounded-circle not-sty">{{
+      notificationsNumber
+    }}</span>
+  </button>
+  <div class="notification-container" *ngIf="showNotifications">
+    <table datatable>
+      <thead class="bg-dark text-white">
+        <tr>
+          <td>Message</td>
+          <td>Contract</td>
+          <td>Contract Type</td>
+          <td>End Date</td>
+          <td>Client</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="notification-item"
+          *ngFor="let notification of notifications"
+        >
+          <td>{{ notification.message }}</td>
+          <td>{{ notification.notificationObjectdto.contratId }}</td>
+          <td>{{ notification.notificationObjectdto.contractType }}</td>
+          <td>{{ notification.notificationObjectdto.endDate }}</td>
+          <td>{{ notification.notificationObjectdto.clientID }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button
+    mat-button
+    [matMenuTriggerFor]="logoutmenu"
+    class="user mt-2 d-flex align-items-center"
+  >
+    <img src="./assets/user.png" alt="" class="user-image mr-1 p-2" />
+    {{ user?.firstName }} {{ user?.lastName }}
+    <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+  </button>
+
+  <mat-menu #logoutmenu="matMenu">
+    <button mat-menu-item class="rounded-circle" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+</nav>
